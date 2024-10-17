@@ -15,7 +15,7 @@ The API follows RESTful principles and returns appropriate HTTP status codes for
 
 ### 1. **Find a Book by ISBN**
 
-**Endpoint:** `GET /books/{isbn}`  
+**Endpoint:** `GET /api/books/{isbn}`  
 **Description:** Retrieves a book's details using its ISBN number.
 
 - **Path Parameter:**
@@ -34,7 +34,7 @@ GET /books/978-3-16-148410-0
 ```json
 {
   "isbn": "978-3-16-148410-0",
-  "title": "The Great Gatsby",
+  "title": "The Nizams of Hyderabad",
   "author": "F. Scott Fitzgerald",
   "publicationYear": 1925,
   "availableCopies": 12
@@ -65,7 +65,7 @@ GET /api/books?authorName=F.%20Scott%20Fitzgerald
 [
   {
     "isbn": "978-3-16-148410-0",
-    "title": "The Great Gatsby",
+    "title": "The Nizams of Hyderabad",
     "author": "F. Scott Fitzgerald",
     "publicationYear": 1925,
     "availableCopies": 12
