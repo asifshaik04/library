@@ -5,6 +5,7 @@ import com.university.library.dto.BookDTO;
 import com.university.library.dto.BookResource;
 import com.university.library.exception.AuthorNotFoundException;
 import com.university.library.exception.BookNotFoundException;
+import com.university.library.exception.InvalidAvailableCopiesException;
 import com.university.library.service.BookService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -227,6 +228,20 @@ class BookAPIControllerTest {
 
         assertThat(response.getStatus(), is(equalTo(HttpStatus.OK.value())));
         assertThat(response.getContentAsString(), is(equalTo("{\"isbn\":\""+bookDTO.isbn()+"\",\"title\":\""+bookDTO.title()+"\",\"author\":\""+bookDTO.author()+"\",\"publicationYear\":"+bookDTO.publicationYear()+",\"availableCopies\":"+bookDTO.availableCopies()+"}")));
+    }
+
+    @Test
+    void shouldThrowInvalidCopiesForDecrementException400Failure() throws Exception {
+
+        Mockito.when(mockBookService.decrementAvailableCopies(GATSBY_ISBN))
+                .thenThrow(new InvalidAvailableCopiesException(GATSBY_ISBN));
+
+        MockHttpServletResponse response = bookMockMvc.perform(MockMvcRequestBuilders
+                .patch(String.format("/api/books/%s/available-copies/decrement", GATSBY_ISBN))
+                .accept(MediaType.APPLICATION_JSON)).andReturn().getResponse();
+
+
+        assertThat(response.getStatus(), is(equalTo(HttpStatus.BAD_REQUEST.value())));
     }
 
 

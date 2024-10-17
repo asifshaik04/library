@@ -45,7 +45,7 @@ GET /books/978-3-16-148410-0
 
 ### 2. **Find Books by Author Name**
 
-**Endpoint:** `GET /books`  
+**Endpoint:** `GET /api/books`  
 **Description:** Retrieves a list of books by the specified author.
 
 - **Query Parameter:**
@@ -57,7 +57,7 @@ GET /books/978-3-16-148410-0
 
 #### Example Request:
 ```http
-GET /books?authorName=F.%20Scott%20Fitzgerald
+GET /api/books?authorName=F.%20Scott%20Fitzgerald
 ```
 
 #### Example Response:
@@ -77,7 +77,7 @@ GET /books?authorName=F.%20Scott%20Fitzgerald
 
 ### 3. **Remove a Book by ISBN**
 
-**Endpoint:** `DELETE /books/{isbn}`  
+**Endpoint:** `DELETE /api/books/{isbn}`  
 **Description:** Deletes a book from the library's collection by ISBN.
 
 - **Path Parameter:**
@@ -89,14 +89,14 @@ GET /books?authorName=F.%20Scott%20Fitzgerald
 
 #### Example Request:
 ```http
-DELETE /books/978-3-16-148410-0
+DELETE /api/books/978-3-16-148410-0
 ```
 
 ---
 
 ### 4. **Create a New Book**
 
-**Endpoint:** `POST /books`  
+**Endpoint:** `POST /api/books`  
 **Description:** Adds a new book to the library.
 
 - **Request Body:**
@@ -108,11 +108,10 @@ DELETE /books/978-3-16-148410-0
 
 #### Example Request:
 ```json
-POST /books
+POST /api/books
 {
-  "isbn": "978-0-7432-7356-5",
-  "title": "To Kill a Mockingbird",
-  "author": "Harper Lee",
+  "title": "The Nizams of Hyderabad",
+  "author": "Adam Harper",
   "publicationYear": 1960,
   "availableCopies": 5
 }
@@ -122,8 +121,8 @@ POST /books
 ```json
 {
   "isbn": "978-0-7432-7356-5",
-  "title": "To Kill a Mockingbird",
-  "author": "Harper Lee",
+  "title": "The Nizams of Hyderabad",
+  "author": "Adam Harper",
   "publicationYear": 1960,
   "availableCopies": 5
 }
@@ -133,7 +132,7 @@ POST /books
 
 ### 5. **Increment Available Copies of a Book**
 
-**Endpoint:** `PATCH /books/{isbn}/available-copies/increment`  
+**Endpoint:** `PATCH /api/books/{isbn}/available-copies/increment`  
 **Description:** Increases the number of available copies for a book by 1.
 
 - **Path Parameter:**
@@ -145,14 +144,14 @@ POST /books
 
 #### Example Request:
 ```http
-PATCH /books/978-3-16-148410-0/available-copies/increment
+PATCH /api/books/978-3-16-148410-0/available-copies/increment
 ```
 
 #### Example Response:
 ```json
 {
   "isbn": "978-3-16-148410-0",
-  "title": "The Great Gatsby",
+  "title": "The Nizams of Hyderabad",
   "author": "F. Scott Fitzgerald",
   "publicationYear": 1925,
   "availableCopies": 13
@@ -163,7 +162,7 @@ PATCH /books/978-3-16-148410-0/available-copies/increment
 
 ### 6. **Decrement Available Copies of a Book**
 
-**Endpoint:** `PATCH /books/{isbn}/available-copies/decrement`  
+**Endpoint:** `PATCH /api/books/{isbn}/available-copies/decrement`  
 **Description:** Decreases the number of available copies for a book by 1.
 
 - **Path Parameter:**
@@ -176,14 +175,14 @@ PATCH /books/978-3-16-148410-0/available-copies/increment
 
 #### Example Request:
 ```http
-PATCH /books/978-3-16-148410-0/available-copies/decrement
+PATCH /api/books/978-3-16-148410-0/available-copies/decrement
 ```
 
 #### Example Response:
 ```json
 {
   "isbn": "978-3-16-148410-0",
-  "title": "The Great Gatsby",
+  "title": "The Nizams of Hyderabad",
   "author": "F. Scott Fitzgerald",
   "publicationYear": 1925,
   "availableCopies": 11

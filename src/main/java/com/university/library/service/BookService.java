@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface BookService {
 
-    public BookDTO getBookByISBN(String isbn);
+    BookDTO getBookByISBN(String isbn);
 
     List<BookDTO> getBooksByAuthor(String authorName);
 

@@ -1,14 +1,13 @@
 package com.university.library.domain;
 
 
-import com.university.library.exception.InvalidAuthorNameException;
 import com.university.library.exception.InvalidAvailableCopiesException;
 
 public class Book {
-    private String isbn;
-    private String title;
-    private String author;
-    private Integer publicationYear;
+    private final String isbn;
+    private final String title;
+    private final String author;
+    private final Integer publicationYear;
     private Integer availableCopies;
 
     public Book(String isbn, String title, String author, Integer publicationYear, Integer availableCopies) {
